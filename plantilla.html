@@ -1,0 +1,99 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>Checkout example  Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/checkout/">
+
+    <!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+    <div class="container">
+  <div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h2>BUSQUEDA BINARIA</h2>
+    <p class="lead">
+      [1,4,7,8,9,14,23,47,56,60,61,63,65,66,68,69,70,73,76,77,79,80,82]
+
+    </p>
+  </div>
+
+  <div class="row">
+   
+    <div class="col-md-12 order-md-1">
+      <h4 class="mb-3">Ingrese un valor a buscar dentro del arrglo</h4>
+      <form class="form-inline">
+        <div class="form-group mx-lg-3 mb-2">
+          <input type="number" class="form-control" id="num" placeholder="valor">
+        </div>
+        <button type="button" onclick="llamaBuscar()" class="btn btn-primary mb-2">Buscar</button>
+      </form>
+    </div>
+  </div>
+
+  
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+        <script src="form-validation.js"></script></body>
+</html>
+<script>
+  function llamaBuscar(){
+      var num=$("#num").val();
+      alert("El numero :"+ num +" se encuentra en la posicion: "+busquedaBinaria())
+  
+  }
+  function busquedaBinaria(){
+
+var  v= [1,4,7,8,9,14,23,47,56,60,61,63,65,66,68,69,70,73,76,77,79,80,82];
+var num=$("#num").val();
+var primero = 0;    
+var last = v.length - 1;  
+var posicion = -1;
+var encontrado = false;
+var parte;
+
+while (encontrado === false && primero <= last) {
+    parte = Math.floor((primero + last)/2);
+    if (v[parte] == num) {
+        encontrado = true;
+        posicion = parte;
+    } else if (v[parte] > num) {  //if in lower half
+        last = parte - 1;
+    } else {  //in in upper half
+        primero = parte + 1;
+    }
+}
+return posicion;
+}
+  
+  
+  </script>
